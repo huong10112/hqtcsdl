@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+</head>
+<body>
+    <h1>Danh sách bài viết</h1>
+
+    {% if session['username'] %}
+        <p>Chào, {{ session['username'] }} | <a href="{{ url_for('logout') }}">Đăng xuất</a></p>
+    {% else %}
+        <a href="{{ url_for('login') }}">Đăng nhập</a>
+    {% endif %}
+
+    <div>
+        {% for article in articles %}
+            <div>
+                <h2><a href="{{ url_for('article', article_id=article.MaBaiViet) }}">{{ article.TieuDe }}</a></h2>
+                <p>{{ article.NoiDung[:100] }}...</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    {% if session['username'] and session['role'] == 'ADMIN' %}
+        <a href="{{ url_for('create_article') }}">Tạo bài viết mới</a>
+    {% endif %}
+</body>
+</html>
