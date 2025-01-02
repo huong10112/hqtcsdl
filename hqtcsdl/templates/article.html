@@ -27,5 +27,12 @@
     {% else %}
         <p>Để bình luận, bạn cần <a href="{{ url_for('login') }}">đăng nhập</a>.</p>
     {% endif %}
+
+    <h3>Danh sách từ khóa:</h3>
+    <ul>
+        {% for keyword in keywords %}
+            <li><a href="{{ url_for('keyword_articles', keyword_name=keyword.TenThe) }}">{{ keyword.TenThe }}</a></li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

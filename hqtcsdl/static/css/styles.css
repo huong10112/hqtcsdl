@@ -1,0 +1,26 @@
+/* styles.css */
+.btn-keyword {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-keyword:hover {
+    background-color: #45a049;
+}
+
+.btn-create, .btn-edit, .btn-delete {
+    margin-top: 10px;
+    padding: 5px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-create:hover, .btn-edit:hover, .btn-delete:hover {
+    background-color: #0056b3;
+}
