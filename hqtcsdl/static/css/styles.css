@@ -1,0 +1,52 @@
+/* styles.css */
+/*.btn-keyword {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-keyword:hover {
+    background-color: #45a049;
+}*/
+
+.btn-create{
+    margin-top: 10px;
+    padding: 5px 15px;/*cỡ chữ*/
+    background-color: #5d00ff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-edit{
+    margin-top: 10px;
+    padding: 5px 15px;/*cỡ chữ*/
+    background-color: #00ff11;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-delete{
+    margin-top: 10px;
+    padding: 5px 15px;/*cỡ chữ*/
+    background-color: #ffc400;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-create:hover {
+    background-color: #b3004e;
+}
+
+.btn-edit:hover{
+    background-color: #0009b3;
+}
+
+.btn-delete:hover{
+    background-color: #b33300;
+}

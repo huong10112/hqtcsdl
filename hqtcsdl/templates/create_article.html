@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Bài Viết Mới</title>
+</head>
+<body>
+    <h1>Tạo Bài Viết Mới</h1>
+    <form method="POST">
+        <label for="title">Tiêu đề:</label>
+        <input type="text" id="title" name="title" required><br>
+
+        <label for="content">Nội dung:</label>
+        <textarea id="content" name="content" rows="5" required></textarea><br>
+
+        <label for="category_id">Danh mục:</label>
+        <select id="category_id" name="category_id" required>
+            {% for category in categories %}
+                <option value="{{ category.MaDanhMuc }}">{{ category.TenDanhMuc }}</option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Tạo bài viết</button>
+    </form>
+</body>
+</html>

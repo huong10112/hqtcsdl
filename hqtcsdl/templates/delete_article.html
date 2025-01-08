@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xóa Bài Viết</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Xác nhận xóa bài viết</h1>
+        <div>
+            <a href="{{ url_for('index') }}">Quay lại trang chủ</a>
+        </div>
+    </header>
+
+    <main>
+        <h2>Bạn có chắc chắn muốn xóa bài viết: "{{ article.TieuDe }}"?</h2>
+        <form action="{{ url_for('delete_article', article_id=article.MaBaiViet) }}" method="POST">
+            <button type="submit" class="btn-delete">Xác nhận xóa</button>
+            <a href="{{ url_for('index') }}" class="btn-cancel">Hủy</a>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hệ thống quản lý bài viết</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<form method="POST">
+    <label for="title">Tiêu đề:</label>
+    <input type="text" name="title" value="{{ article.TieuDe }}" required>
+    
+    <label for="content">Nội dung:</label>
+    <textarea name="content" required>{{ article.NoiDung }}</textarea>
+    
+    <label for="category_id">Danh mục:</label>
+    <select name="category_id" required>
+      {% for category in categories %}
+        <option value="{{ category.MaDanhMuc }}" {% if category.MaDanhMuc == article.MaDanhMuc %} selected {% endif %}>
+          {{ category.TenDanhMuc }}
+        </option>
+      {% endfor %}
+    </select>
+    
+    <button type="submit">Cập nhật bài viết</button>
+  </form>
+  

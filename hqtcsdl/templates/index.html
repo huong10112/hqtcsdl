@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Chào mừng bạn đến với hệ thống quản lý bài viết</h1>
+        <!-- Hiển thị thông tin người dùng -->
+        <div>
+            {% if session['username'] %}
+                <p>Chào, {{ session['username'] }} ({{ session['role'] }})</p>
+                <a href="{{ url_for('logout') }}">Đăng xuất</a>
+            {% else %}
+                <a href="{{ url_for('login') }}">Đăng nhập</a>
+            {% endif %}
+        </div>
+    </header>
+
+    <main>
+        <h2>Danh sách bài viết</h2>
+
+        <!-- Hiển thị nút tạo bài viết mới chỉ dành cho ADMIN -->
+        {% if session['role'] == 'ADMIN' %}
+        <form action="{{ url_for('create_article') }}" method="GET">
+            <button type="submit" class="btn-create">Tạo bài viết mới</button>
+        </form>
+        {% endif %}
+
+        <!-- Hiển thị các bài viết đã được duyệt -->
+        <div class="articles-list">
+            {% if articles %}
+                {% for article in articles %}
+                <div class="article-item">
+                    <h3>{{ article.TieuDe }}</h3>
+
+                    <!-- Hiển thị tên danh mục -->
+                    <p><strong>Danh mục: </strong>{{ article.danhmuc }}</p>
+
+                    <p>{{ article.NoiDung | truncate(150) }}...</p>
+
+                    <!-- Hiển thị từ khóa -->
+                    <p><strong>Từ khóa: </strong>{{ article.TuKhoa }}</p>
+
+                    <a href="{{ url_for('article', article_id=article.MaBaiViet) }}">Xem chi tiết</a>
+                    
+                    {% if session['role'] == 'ADMIN' %}
+                    <div class="admin-actions">
+                        <!-- Sửa bài viết -->
+                        <form action="{{ url_for('edit_article', article_id=article.MaBaiViet) }}" method="GET">
+                            <button type="submit" class="btn-edit">Sửa</button>
+                        </form>
+                        <!-- Xóa bài viết -->
+                        <form action="{{ url_for('delete_article', article_id=article.MaBaiViet) }}" method="POST">
+                            <button type="submit" class="btn-delete">Xóa</button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Chưa có bài viết nào để hiển thị.</p>
+            {% endif %}
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Hệ thống quản lý bài viết</p>
+    </footer>
+</body>
+</html>

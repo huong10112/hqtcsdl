@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách từ khóa</title>
+</head>
+<body>
+    <h1>Danh sách từ khóa theo bài viết</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Bài Viết</th>
+                <th>Từ Khóa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ma_bai_viet, tieu_de, ten_the in articles_keywords %}
+                <tr>
+                    <td>{{ tieu_de }}</td>
+                    <td>{{ ten_the }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
